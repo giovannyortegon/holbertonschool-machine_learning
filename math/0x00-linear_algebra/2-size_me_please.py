@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-""" Imports """
-import numpy as np
-
-
 def matrix_shape(matrix):
     """ matrix_shape function - calculates the shape of a matrix
     matrix: inout matrix
