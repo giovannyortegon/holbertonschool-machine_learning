@@ -8,9 +8,10 @@ def matrix_shape(matrix):
     matrix: inout matrix
     Return: size of matrix
     """
-    if len(matrix) == 0:
+    try:
+        if type(matrix[0]) is not list:
+            return [len(matrix)]
+        else:
+            return [len(matrix)] + matrix_shape(matrix[0])
+    except Exception:
         return [0]
-    elif type(matrix[0]) is not list:
-        return [len(matrix)]
-    else:
-        return [len(matrix)] + matrix_shape(matrix[0])
