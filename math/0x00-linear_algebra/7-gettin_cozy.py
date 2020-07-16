@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """ concatenates two matrices along a specific axis """
 from copy import deepcopy
 cat_arrays = __import__("6-howdy_partner").cat_arrays
