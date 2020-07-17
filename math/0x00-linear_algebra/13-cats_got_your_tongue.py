@@ -10,6 +10,5 @@ def np_cat(mat1, mat2, axis=0):
     axisi: along of a matrix
     Return:  a new numpy.ndarray
     """
-    arr = np.concatenate((mat1, mat2), axis=axis)
-    print(type(arr))
-    return arr
+    mat = np.concatenate((mat1, mat2), axis=axis)
+    return mat
