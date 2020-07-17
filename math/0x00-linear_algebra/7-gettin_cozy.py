@@ -9,10 +9,10 @@ def cat_matrices2D(mat1, mat2, axis=0):
     mat2: Input second matrix
     Return: New matrix
     """
-    new_mat = []
-    a = [[mat1[y][x] for x in range(len(mat1[0]))] for y in range(len(mat1))]
-    b = [[mat2[y][x] for x in range(len(mat2[0]))] for y in range(len(mat2))]
     try:
+        new_mat = []
+        a = [[mat1[y][x] for x in range(len(mat1[0]))] for y in range(len(mat1))]
+        b = [[mat2[y][x] for x in range(len(mat2[0]))] for y in range(len(mat2))]
         if axis == 1:
             for i in range(len(mat1[0])):
                 new_mat.append(cat_arrays(a[i], b[i]))
