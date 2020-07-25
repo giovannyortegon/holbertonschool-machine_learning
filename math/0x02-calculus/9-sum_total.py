@@ -10,10 +10,7 @@ def summation_i_squared(n):
         Return:
             res:(int) Sigma Notation of a number
     """
-    if type(n) is int or n is None:
+    if type(n) is not int or n is None:
         return None
     else:
-        if n == 1:
-            return 1
-        else:
-            return int(n * (n + 1) * (2 * n + 1)/6)
+        return int(n * (n + 1) * (2 * n + 1)/6)
