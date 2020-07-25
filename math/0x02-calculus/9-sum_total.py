@@ -10,7 +10,7 @@ def summation_i_squared(n):
         Return:
             res:(int) Sigma Notation of a number
     """
-    if type(n) is not int:
+    if type(n) is not int or n is None:
         return None
     else:
         if n == 1:
