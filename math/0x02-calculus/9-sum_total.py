@@ -1,10 +1,11 @@
-#!/udr/bin/env python3
+#!/usr/bin/env python3
 """ Sigma Notation """
 
 
 def summation_i_squared(n):
     """ summation_i_squared - Sigma Notation
-        n:(int)     iterations numbers
+        Args:
+            n(int):     iterations numbers
 
         Return:
             res:(int) Sigma Notation of a number
