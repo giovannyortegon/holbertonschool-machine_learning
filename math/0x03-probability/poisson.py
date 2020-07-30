@@ -65,7 +65,7 @@ class Poisson:
         if type(k) is not int:
             k = int(k)
 
-        if k <= 0:
+        if k < 0:
             return 0
         else:
             cdf = 0
