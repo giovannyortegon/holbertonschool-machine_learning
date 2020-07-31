@@ -5,7 +5,9 @@
 
 class Exponential:
     """ Exponential represents an exponential distribution
-            """
+    """
+    e = 2.7182818285
+
     def __init__(self, data=None, lambtha=1.):
         """ Args:
 
@@ -26,3 +28,19 @@ class Exponential:
         else:
             self.data = data
             self.lambtha = float(1 / (sum(self.data) / len(self.data)))
+
+    def pdf(self, x):
+        """ pdf - Calculates the value of the PDF
+                  for a given time period
+
+            Args:
+                x is the time period.
+
+            Return:
+                Returns the PDF value for x
+        """
+        if x < 0:
+            return 0
+        else:
+            pdf = self.lambtha * Exponential.e ** (-self.lambtha * x)
+            return pdf
