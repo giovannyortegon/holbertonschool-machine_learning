@@ -67,3 +67,19 @@ class Normal:
         const = 1 / (self.stddev * (2 * Normal.pi) ** 0.5)
         exp = Normal.e ** -((x - self.mean) ** 2 / (2 * self.stddev ** 2))
         return const * exp
+
+    def cdf(self, x):
+        """ cdf - Calculates the value of the CDF
+
+            Args:
+                x is the x-value
+
+            Return:
+                Returns the CDF value for x
+        """
+        P = ((x - self.mean) / (self.stddev * (2 ** 0.5)))
+        mul = (2/(Normal.pi ** 0.5))
+        mulr = (P - P ** 3 / 3) + (P ** 5 / 10) - (P ** 7 / 42) + P ** 9 / 216
+        errf = mul * mulr
+        cdf = 0.5 * (1 + errf)
+        return cdf
