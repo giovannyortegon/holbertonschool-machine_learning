@@ -84,6 +84,6 @@ class Neuron:
         """
         m = Y.shape[1]
         logprobs1 = np.multiply(np.log(A), Y)
-        logprobs2 = np.multiply(np.log(1.0000001 - A), (1.0000001 - Y))
+        logprobs2 = np.multiply(np.log(1.0000001 - A), (1 - Y))
         cost = -(1 / m) * np.sum(logprobs1 + logprobs2)
         return cost
