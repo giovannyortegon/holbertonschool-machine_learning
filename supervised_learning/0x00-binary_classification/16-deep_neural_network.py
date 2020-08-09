@@ -4,7 +4,7 @@ import numpy as np
 
 
 class DeepNeuralNetwork:
-    """
+    """ DeepNeuralNetwork - defines a deep neural network
     """
     def __init__(self, nx, layers):
         """ DeepNeuralNetwork - public instance attributes
@@ -12,9 +12,10 @@ class DeepNeuralNetwork:
         Args:
             nx is the number of input features
             layers is a list representing the number of nodes
-
             L: The number of layers in the neural network.
             cache: A dictionary to hold all intermediary values of the network.
+            weights: A dictionary to hold all weights
+                     and biased of the network.
         """
         if type(nx) is not int:
             raise TypeError("nx must be an integer")
