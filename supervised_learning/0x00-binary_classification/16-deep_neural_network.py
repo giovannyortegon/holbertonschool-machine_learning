@@ -29,6 +29,11 @@ class DeepNeuralNetwork:
         else:
             self.layers = layers
 
+        arrprob = np.array(self.layers)
+        lenarr = arrprob[arrprob >= 1].shape[0]
+        if len(self.layers) != lenarr:
+            raise TypeError("layers must be a list of positive integers")
+
         self.L = len(self.layers)
         self.cache = {}
         self.weights = {}
