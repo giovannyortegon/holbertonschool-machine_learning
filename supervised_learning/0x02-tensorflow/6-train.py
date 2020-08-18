@@ -35,24 +35,24 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
 
     x, y = create_placeholders(nx, classes)
 
-    pred = forward_prop(x, layer_sizes, activations)
+    y_pred = forward_prop(x, layer_sizes, activations)
     accuracy = calculate_accuracy(y, pred)
     loss = calculate_loss(y, pred)
-    train = create_train_op(loss, alpha)
+    train_op = create_train_op(loss, alpha)
 
     tf.add_to_collection('x', x)
     tf.add_to_collection('y', y)
-    tf.add_to_collection('pred', pred)
+    tf.add_to_collection('y_pred', y_pred)
     tf.add_to_collection('accuracy', accuracy)
     tf.add_to_collection('loss', loss)
-    tf.add_to_collection('train', train)
+    tf.add_to_collection('train_op', train_op)
 
     init = tf.global_variables_initializer()
 
-    save = tf.train.Saver()
+    saver = tf.train.Saver()
 
     with tf.Session() as session:
-        session.run()
+        session.run(init)
 
         for i in range(iterations + 1):
             train_cost = session.run(loss,
@@ -75,8 +75,8 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
                     accuracy=valid_accuracy))
 
             if i < iterations:
-                session.run(train, feed_dict={x: X_train, y: Y_train})
+                session.run(train_op, feed_dict={x: X_train, y: Y_train})
 
-        save_path = save.save(session, save_path)
+        save_path = saver.save(session, save_path)
 
     return save_path
