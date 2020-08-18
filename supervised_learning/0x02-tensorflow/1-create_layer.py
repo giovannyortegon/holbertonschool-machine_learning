@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """ create layer """
 import tensorflow as tf
-# import tensorflow.compat.v1 as tf
-# tf.disable_v2_behavior()
 
 
 def create_layer(prev, n, activation):
@@ -20,4 +18,4 @@ def create_layer(prev, n, activation):
     layers = tf.layers.Dense(units=n, kernel_initializer=init,
                              activation=activation, name='Layer')
 
-    return layer(prev)
+    return layers(prev)
