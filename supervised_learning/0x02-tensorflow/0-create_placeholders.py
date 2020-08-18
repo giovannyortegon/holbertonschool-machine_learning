@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ create placeholders """
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 
 def create_placeholders(nx, classes):
@@ -13,5 +14,7 @@ def create_placeholders(nx, classes):
     Returns:
         placeholders named x and y, respectively
     """
-    x = tf.placeholder(tf.float32, shape=[None, nx], name="x")
-    y = tf.placeholder(tf.float32, shape=[None, classes], name="y")
+    x = tf.placeholder(tf.float32, shape=(None, nx), name="x")
+    y = tf.placeholder(tf.float32, shape=(None, classes), name="y")
+
+    return x, y
