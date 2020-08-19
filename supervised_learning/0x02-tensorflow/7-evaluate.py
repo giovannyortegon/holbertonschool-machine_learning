@@ -26,6 +26,6 @@ def evaluate(X, Y, save_path):
 
         Pred = session.run(y_pred, feed_dict={x: X, y: Y})
         Accuracy = session.run(accuracy, feed_dict={x: X, y: Y})
-        Loss = session.run(loss, feed_dict={x: X, y})
+        Loss = session.run(loss, feed_dict={x: X, y: Y})
 
     return Pred, Accuracy, Loss
