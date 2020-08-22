@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""  """
+""" shuffles the data """
 import numpy as np
 
 
@@ -16,7 +16,9 @@ def shuffle_data(X, Y):
     Returns:
         the shuffled X and Y matrices
     """
-    X_shuffled = np.random.permutation(X)
-    Y_shuffled = np.random.permutation(Y)
+    m = X.shape[0]
+    perm = np.random.permutation(m)
+    X_shuffled = X[perm, :]
+    Y_shuffled = Y[perm, :]
 
     return X_shuffled, Y_shuffled
