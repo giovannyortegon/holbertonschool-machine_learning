@@ -15,7 +15,7 @@ def normalize(X, m, s):
         s   is a numpy.ndarray of shape (nx,) that contains
             the standard deviation of all features of X
 
-    Returns: 
+    Returns:
         The normalized X matrix
     """
     norm_X = X - m
