@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """ create momentum """
 import tensorflow as tf
-# import tensorflow.compat.v1 as tf
-# tf.disable_v2_behavior()
 
 
 def create_momentum_op(loss, alpha, beta1):
