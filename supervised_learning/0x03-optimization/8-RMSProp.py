@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """ RMSProp optimization algorithm """
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+import tensorflow as tf
 
 
 def create_RMSProp_op(loss, alpha, beta2, epsilon):
