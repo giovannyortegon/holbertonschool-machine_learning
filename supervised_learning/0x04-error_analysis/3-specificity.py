@@ -17,7 +17,7 @@ def specificity(confusion):
 
     total_numbers = np.array([np.sum(confusion)] * cls)
     fn = np.sum(confusion, axis=0)
-    fp = np.sum(confusion, axis=0)
+    fp = np.sum(confusion, axis=1)
     tp = confusion.diagonal()
     tn = total_numbers - fn - fp + tp
     fp = fn - tp
