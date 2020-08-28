@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" """
+""" calculates the precision """
 import numpy as np
 
 
