@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """ mini-batch gradient descent """
 import numpy as np
-# import tensorflow.compat.v1 as tf
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+import tensorflow as tf
 
 shuffle_data = __import__('2-shuffle_data').shuffle_data
 
