@@ -37,7 +37,7 @@ def pool_forward(A_prev, kernel_shape, stride=(1, 1), mode='max'):
 
     for i in range(pool_h):
         for j in range(pool_w):
-            slide_img = images[:, i * sh:i * sh + kh,
+            slide_img = A_prev[:, i * sh:i * sh + kh,
                                j * sw:j * sw + kw]
             if mode == 'max':
                 pool[:, i, j] = np.max(np.max(slide_img, axis=1), axis=1)
