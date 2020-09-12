@@ -17,11 +17,13 @@ def lenet5(X):
                          kernel_initializer='he_normal')(X)
 
     s2 = K.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(c1)
+
     c3 = K.layers.Conv2D(filters=16, kernel_size=5,
                          padding='valid', activation='relu',
                          kernel_initializer='he_normal')(s2)
 
     s4 = K.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(c3)
+
     f = K.layers.Flatten()(s4)
 
     c5 = K.layers.Dense(units=120, activation='relu',
@@ -37,6 +39,6 @@ def lenet5(X):
 
     model.compile(optimizer=K.optimizers.Adam(),
                   loss='categorical_crossentropy',
-                  metrics=['acccuracy'])
+                  metrics=['accuracy'])
 
     return model
