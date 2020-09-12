@@ -44,14 +44,15 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
         Returns:
             the partial derivatives with respect to the previous layer.
     """
+    m, h_new, w_new, c_new = dZ.shape
     _, h_prev, w_prev, c_prev = A_prev.shape
     kh, kw, _, _ = W.shape
     ph = pw = 0
     sh, sw = stride
-    m, h_new, w_new, c_new = dZ.shape
+
     dA_prev = np.zeros(A_prev.shape)
     dW = np.zeros(W.shape)
-    db = np.sum(dZ, axis=(0, 1, 2))
+    db = np.sum(dZ, axis=(0, 1, 2), keepdims=True)
 
     if padding == 'same':
         ph = int(np.ceil(((sh * h_prev) - sh + kh - h_prev) / 2))
