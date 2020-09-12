@@ -46,4 +46,4 @@ def lenet5(x, y):
     accuracy = tf.reduce_mean(tf.cast(pred, tf.float32))
     optimizer = tf.train.AdamOptimizer().minimize(loss)
 
-    return output, optimizer, loss, accuracy
+    return softmax, optimizer, loss, accuracy
