@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" inception block """
 import tensorflow.keras as K
 
 
