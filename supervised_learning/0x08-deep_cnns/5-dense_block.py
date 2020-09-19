@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" """
+""" dense block """
 import tensorflow.keras as K
 
 
