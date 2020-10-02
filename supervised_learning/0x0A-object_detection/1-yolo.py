@@ -31,9 +31,8 @@ class Yolo:
         self.nms_t = nms_t
         self.anchors = anchors
 
-
     def process_outputs(self, outputs, image_size):
-        """ process_outputs - 
+        """ process_outputs
 
         Args:
             outputs:    is a list of numpy containing the predictions
@@ -74,38 +73,38 @@ class Yolo:
             c_y = c_y.reshape(grid_height, grid_height, 1)
 
         # b_x, b_y, b_w, b_h x and y center coordinates, w and h prediction
-        b_x = (1 / (1 + np.exp(-t_x))) + c_x
-        b_y = (1 / (1 + np.exp(-t_y))) + c_y
-        b_w = p_w * np.exp(t_w)
-        b_h = p_h * np.exp(t_h)
+            b_x = (1. / (1. + np.exp(-t_x))) + c_x
+            b_y = (1. / (1. + np.exp(-t_y))) + c_y
+            b_w = p_w * np.exp(t_w)
+            b_h = p_h * np.exp(t_h)
 
         # Input size normalize
-        b_x /= grid_width
-        b_y /= grid_height
+            b_x /= grid_width
+            b_y /= grid_height
 
-        input_width = self.model.input.shape[1].value
-        input_height = self.model.input.shape[2].value
+            input_width = self.model.input.shape[1].value
+            input_height = self.model.input.shape[2].value
 
-        b_w /= input_width
-        b_h /= input_height
+            b_w /= input_width
+            b_h /= input_height
 
         # Bonding Box
-        x1 = b_x - b_w / 2
-        y1 = b_y - b_h / 2
-        x2 = b_x + b_w / 2
-        y2 = b_y + b_h / 2
+            x1 = (b_x - b_w / 2)
+            y1 = (b_y - b_h / 2)
+            x2 = (b_x + b_w / 2)
+            y2 = (b_y + b_h / 2)
 
-        boxes[i][..., 0] = x1 * image_width
-        boxes[i][..., 1] = y1 * input_height
-        boxes[i][..., 2] = x2 * image_width
-        boxes[i][..., 3] = y2 * input_height
+            boxes[i][..., 0] = x1 * image_width
+            boxes[i][..., 1] = y1 * image_height
+            boxes[i][..., 2] = x2 * image_width
+            boxes[i][..., 3] = y2 * image_height
 
-        confidences = 1 / (1 + np.exp(-outputs[i][:, :, :, 4]))
-        box_confidences.append(confidences.reshape(grid_height,
-                                                   grid_width,
-                                                   anchor_boxes, 1))
+            confidences = 1 / (1 + np.exp(-outputs[i][:, :, :, 4]))
+            box_confidences.append(confidences.reshape(grid_height,
+                                                       grid_width,
+                                                       anchor_boxes, 1))
 
-        class_probs = 1 / (1 + np.exp(-outputs[i][:, :, :, 5:]))
-        box_class_probs.append(class_probs)
+            class_probs = 1 / (1 + np.exp(-outputs[i][:, :, :, 5:]))
+            box_class_probs.append(class_probs)
 
         return boxes, box_confidences, box_class_probs
