@@ -164,7 +164,9 @@ class Yolo:
             a tuple of (box_predictions, predicted_box_classes,
             predicted_box_scores).
         """
-        box = box_class = box_score = list()
+        box = list()
+        box_class = list()
+        box_score = list()
 
         for bx in np.unique(box_classes):
             indices = np.where(box_classes == bx)
