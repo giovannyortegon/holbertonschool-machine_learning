@@ -127,14 +127,23 @@ class Yolo:
         Returns:
             a tuple of (filtered_boxes, box_classes, box_scores)
         """
-        boxes_score = np.multiply(box_confidences, box_class_probs)
-        box_class = K.backend.argmax(boxes_score, axis=-1)
-        box_score = K.backend.max(boxes_score, axis=-1)
+        boxes_score = [i * j for i, j in zip(box_confidences, box_class_probs)]
 
-        filter_mask = K.backend.greater_equal(box_score, self.class_t)
+        classes = [score.argmax(axis=-1) for score in boxes_score]
+        class_reshape = [cls.reshape(-1) for cls in classes]
+        box_class = np.concatenate(class_reshape, axis=-1)
 
-        filtered_boxes = tf.boolean_mask(boxes, filter_mask)
-        box_classes = tf.boolean_mask(box_class, filter_mask)
-        box_scores = tf.boolean_mask(box_class_score, filter_mask)
+        scores = [score.max(axis=-1) for score in boxes_score]
+        score_reshape = [score.reshape(-1) for score in scores]
+        box_class_score = np.concatenate(score_reshape, axis=-1)
+
+        boxes_reshape = [box.reshape(-1, 4) for box in boxes]
+        boxes_processed = np.concatenate(boxes_reshape, axis=0)
+
+        filter_mask = np.where(box_class_score >= self.class_t)
+
+        filtered_boxes = boxes_processed[filter_mask]
+        box_classes = box_class[filter_mask]
+        box_scores = box_class_score[filter_mask]
 
         return filtered_boxes, box_classes, box_scores
