@@ -251,9 +251,6 @@ class Yolo:
         for img in images:
             process = cv2.resize(img, dim, interpolation=cv2.INTER_CUBIC)
             pimages.append(process / 255)
-            image_shapes.append(img.shape)
+            image_shapes.append(img.shape[:2])
 
-        pimages = np.array(pimages)
-        image_shapes = np.array(image_shapes)
-
-        return pimages, image_shapes
+        return np.array(pimages), np.array(image_shapes)
