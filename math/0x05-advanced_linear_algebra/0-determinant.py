@@ -38,10 +38,12 @@ def determinant(matrix):
     elif len(matrix) == 2:
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
-    det = 0
+    det = np.linalg.det(np.array(matrix))
 
-    for i in range(len(matrix[0])):
-        omit = minor_of_element(matrix, 0, i)
-        det += matrix[0][i] * ((-1) ** i) * determinant(omit)
+#    det = 0
 
-    return det
+#    for i in range(len(matrix[0])):
+#        omit = minor_of_element(matrix, 0, i)
+#        det += matrix[0][i] * ((-1) ** i) * determinant(omit)
+
+    return round(det)
