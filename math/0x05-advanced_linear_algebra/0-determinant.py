@@ -3,22 +3,6 @@
 import numpy as np
 
 
-def minor_of_element(matrix, i, j):
-    """ minor_of_element
-    Args:
-        matrix: is a list of list
-        i: is a row
-        j: is column
-
-    return:
-        A new matrix
-    """
-    new = [[matrix[k][m] for m in range(len(matrix[k])) if m != j]
-           for k in range(len(matrix)) if k != i]
-
-    return new
-
-
 def determinant(matrix):
     """ Determinant - calculates the determinant
 
@@ -39,11 +23,5 @@ def determinant(matrix):
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
     det = np.linalg.det(np.array(matrix))
-
-#    det = 0
-
-#    for i in range(len(matrix[0])):
-#        omit = minor_of_element(matrix, 0, i)
-#        det += matrix[0][i] * ((-1) ** i) * determinant(omit)
 
     return round(det)
